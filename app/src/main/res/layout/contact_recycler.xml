@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+        android:layout_width="220dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@android:color/darker_gray"
+        android:layout_margin="10dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cONTACT nAME"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/white"
+                android:layout_toEndOf="@+id/card2"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                style="@style/TextAppearance.MaterialComponents.Body1"
+                android:id="@+id/contactName" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="50dp"
+                android:background="@color/purple_700"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/card2"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/contactInitials"
+                    android:gravity="center_horizontal"
+                    android:text="XR"/>
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </RelativeLayout>
+
+
+
+
+
+
+    </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
+</LinearLayout>

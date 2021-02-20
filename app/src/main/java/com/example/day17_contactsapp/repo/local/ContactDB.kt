@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.day17_contactsapp.model.Contact
+import com.example.day17_contactsapp.repo.dao.ContactDAO
 
 @Database(entities = [Contact::class], version = 2)
 @TypeConverters(Converters::class)
@@ -24,8 +25,7 @@ abstract class ContactDB : RoomDatabase() {
                 synchronized(ContactDB::class.java){
                     if (INSTANCE == null){
                         INSTANCE = Room.databaseBuilder(
-                            context.applicationContext, ContactDB::class.java, DB_NAME
-                        ).build()
+                            context.applicationContext, ContactDB::class.java, DB_NAME).build()
                     }
                 }
             }
