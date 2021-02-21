@@ -6,13 +6,15 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "Contact_Table")
 data class Contact @JvmOverloads constructor (
 
-private var firstName: String,
-private var lastName: String,
-private var ADDRESS: Address,
-private var phone : List<Float>,
-private var email : List<String>,
+val firstName: String,
+val lastName: String,
+val ADDRESS: Address,
+val phone : List<Float>,
+val email : List<String>,
 
 @PrimaryKey(autoGenerate = true)
-private var id: Int
+val id: Int
 
 )
+
+

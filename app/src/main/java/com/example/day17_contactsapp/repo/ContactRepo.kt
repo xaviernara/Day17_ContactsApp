@@ -13,7 +13,9 @@ class ContactRepo (private val contactDAO: ContactDAO){
 
     // Room executes all queries on a separate thread.
     // Observed Flow will notify the observer when the data has changed.
-    val allContacts : Flow<List<Contact>> = contactDAO.selectAllContacts()
+    //val allContacts : Flow<List<Contact>> = contactDAO.selectAllContacts()
+    val allContacts : List<Contact> = contactDAO.selectAllContacts()
+
 
 
 
@@ -26,6 +28,19 @@ class ContactRepo (private val contactDAO: ContactDAO){
 
         contactDAO.insertContact(contact)
     }
+
+    suspend fun deleteContact(contact: Contact){
+        contactDAO.deleteContact(contact)
+    }
+
+
+    suspend fun updateContact(contact: Contact){
+        contactDAO.updateContact(contact)
+    }
+
+
+
+
 
 
 

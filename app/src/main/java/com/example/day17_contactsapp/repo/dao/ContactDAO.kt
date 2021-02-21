@@ -2,7 +2,6 @@ package com.example.day17_contactsapp.repo.dao
 
 import androidx.room.*
 import com.example.day17_contactsapp.model.Contact
-import kotlinx.coroutines.flow.Flow
 
 
 /*
@@ -39,7 +38,10 @@ interface ContactDAO {
      */
 
     @Query("SELECT * FROM Contact_Table ORDER BY lastName ASC")
-    fun selectAllContacts():Flow<List<Contact>>
+    //fun selectAllContacts():Flow<List<Contact>>
+    fun selectAllContacts():List<Contact>
+
+
 
     //https://developer.android.com/reference/androidx/room/Delete
    @Delete
