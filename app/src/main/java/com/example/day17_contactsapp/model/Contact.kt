@@ -9,7 +9,7 @@ data class Contact @JvmOverloads constructor (
 val firstName: String,
 val lastName: String,
 val ADDRESS: Address,
-val phone : List<Float>,
+val phone : List<String>,
 val email : List<String>,
 
 @PrimaryKey(autoGenerate = true)
