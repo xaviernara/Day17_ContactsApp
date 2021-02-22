@@ -28,15 +28,15 @@ class Converters {
 
     /////////////////////////////////////////////////////////////////////////////////
 
-    //Converter for phone list to String
+    //Converter for List to String
     @TypeConverter
-    fun phoneListToString(phoneList : List<String>):String{
+    fun listToString(list : List<String>):String{
         val type = Types.newParameterizedType(List::class.java,String::class.java)
         val adapter = Moshi.Builder().build().adapter<List<String>>(type)
-        return adapter.toJson(phoneList)
+        return adapter.toJson(list)
     }
 
-    //Converter for String to phone list
+    //Converter for String to list
     @TypeConverter
     fun stringToPhoneList(jsonString: String): List<String>? {
         val type = Types.newParameterizedType(List::class.java,String::class.java)
@@ -47,21 +47,6 @@ class Converters {
 
 
 
-    //Converter for email list to String
-    @TypeConverter
-    fun emailListToString(emailList : List<String>):String{
-        val type = Types.newParameterizedType(List::class.java,String::class.java)
-        val adapter = Moshi.Builder().build().adapter<List<String>>(type)
-        return adapter.toJson(emailList)
-    }
-
-    //Converter for String to phone list
-    @TypeConverter
-    fun stringToEmailList(jsonString: String): List<String>? {
-        val type = Types.newParameterizedType(List::class.java,String::class.java)
-        val adapter = Moshi.Builder().build().adapter<List<String>>(type)
-        return adapter.fromJson(jsonString)?:listOf()
-    }
 
 
 

@@ -4,16 +4,16 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "Contact_Table")
-data class Contact @JvmOverloads constructor (
+data class Contact (
 
-val firstName: String,
-val lastName: String,
-val ADDRESS: Address,
-val phone : List<String>,
-val email : List<String>,
+    val firstName: String,
+    val lastName: String,
+    val ADDRESS: Address?,
+    val phone: List<String>,
+    val email: List<String>,
 
-@PrimaryKey(autoGenerate = true)
-val id: Int
+    @PrimaryKey(autoGenerate = true)
+    val id: Int
 
 )
 

@@ -9,7 +9,7 @@ import com.example.day17_contactsapp.model.Contact
 import com.example.day17_contactsapp.repo.dao.ContactDAO
 
 
-//https://developer.android.com/codelabs/android-room-with-a-view-kotlin#7
+
 //Annotates class to be a Room Database with a table (entity) of the Contact class
 @Database(entities = [Contact::class], version = 2)
 @TypeConverters(Converters::class)
@@ -33,6 +33,7 @@ abstract class ContactDB : RoomDatabase() {
 
 
 
+    //https://developer.android.com/codelabs/android-room-with-a-view-kotlin#7
 
     abstract fun contactDAO() : ContactDAO
 
