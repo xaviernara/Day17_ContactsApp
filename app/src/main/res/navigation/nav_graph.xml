@@ -61,8 +61,11 @@
 
 
     </fragment>
-
-
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.day17_contactsapp.view.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 
 
 </navigation>

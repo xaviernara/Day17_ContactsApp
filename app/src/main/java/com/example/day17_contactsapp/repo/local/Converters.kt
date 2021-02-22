@@ -10,25 +10,29 @@ import com.squareup.moshi.adapter
 class Converters {
 
     //Converter for Address object to String
+    //DONT NEED type variable WHEN CONVERTING A CUSTOM OBJECT TO STRING
     @TypeConverter
-    fun addressToString(addressList : Address):String{
-        val type = Types.newParameterizedType(Address::class.java)
-        val adapter = Moshi.Builder().build().adapter<Address>(type)
-        return adapter.toJson(addressList)
+    fun addressToString(address : Address):String{
+        //val type = Types.newParameterizedType(Address::class.java)
+        val adapter = Moshi.Builder().build().adapter<Address>(Address::class.java)
+        return adapter.toJson(address)
     }
 
 
     //Converter for String to Address object
+    //DONT NEED type variable WHEN CONVERTING A CUSTOM OBJECT TO STRING
+
     @TypeConverter
     fun stringToAddress(jsonString: String): Address? {
-        val type = Types.newParameterizedType(Address::class.java)
-        val adapter = Moshi.Builder().build().adapter<Address>(type)
+        //val type = Types.newParameterizedType(Address::class.java)
+        val adapter = Moshi.Builder().build().adapter<Address>(Address::class.java)
         return adapter.fromJson(jsonString)
     }
 
     /////////////////////////////////////////////////////////////////////////////////
 
     //Converter for List to String
+    //ONLY NEED type variable WHEN CONVERTING A LIST<>
     @TypeConverter
     fun listToString(list : List<String>):String{
         val type = Types.newParameterizedType(List::class.java,String::class.java)
@@ -37,6 +41,7 @@ class Converters {
     }
 
     //Converter for String to list
+    //ONLY NEED type variable WHEN CONVERTING A LIST<>
     @TypeConverter
     fun stringToPhoneList(jsonString: String): List<String>? {
         val type = Types.newParameterizedType(List::class.java,String::class.java)

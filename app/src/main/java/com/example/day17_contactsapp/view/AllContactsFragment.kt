@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.day17_contactsapp.adaptor.ContactAdapter
 import com.example.day17_contactsapp.databinding.FragmentAllContactsBinding
+import com.example.day17_contactsapp.model.Address
 import com.example.day17_contactsapp.model.Contact
 import com.example.day17_contactsapp.viewmodel.ContactViewModel
 
@@ -27,18 +25,18 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class AllContactsFragment : Fragment() {
-    private var param1: String? = null
-    private var param2: String? = null
-    val viewModel by viewModels<ContactViewModel>()
+   /* private var param1: String? = null
+    private var param2: String? = null*/
+   private val viewModel by viewModels<ContactViewModel>()
 
     private lateinit var binding: FragmentAllContactsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
+        /*arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
-        }
+        }*/
     }
 
     override fun onCreateView(
@@ -64,16 +62,25 @@ class AllContactsFragment : Fragment() {
     }
 
     private fun insertContactsIntoDB(): Contact {
-        val phone = listOf<String>("77793111")
-        val email = listOf<String>("xnara@yahoo.com")
-        var contact = Contact("xavier", "nara", null, phone, email, 1)
+        val phone = listOf("77793111")
+        val email = listOf("xnara@yahoo.com")
+        val address = Address("place st","gary","In",45640,1)
 
-        return contact
+        return Contact("xavier", "nara", address, phone, email, 1)
+    }
+
+    private fun insertContactsIntoDB2(): Contact {
+        val phone = listOf("123456789")
+        val email = listOf("thing@yahoo.com")
+        val address = Address("place st","gary","In",45640,1)
+
+        return Contact("person", "place", address, phone, email, 1)
     }
 
 
     private fun initObservers() {
         viewModel.insertContacts(insertContactsIntoDB())
+        viewModel.insertContacts(insertContactsIntoDB2())
         viewModel.getAllContacts()
         viewModel._allContactsList.observe(requireActivity()) {
             generateDataList(it)

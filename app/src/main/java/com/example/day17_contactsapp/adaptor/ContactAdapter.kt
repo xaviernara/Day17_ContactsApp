@@ -1,19 +1,27 @@
 package com.example.day17_contactsapp.adaptor
 
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.day17_contactsapp.R
 import com.example.day17_contactsapp.databinding.ContactRecyclerBinding
 import com.example.day17_contactsapp.databinding.FragmentAllContactsBinding
+import com.example.day17_contactsapp.databinding.FragmentContactDetailsBinding
 import com.example.day17_contactsapp.model.Contact
+import com.example.day17_contactsapp.view.ContactDetailsFragment
+import kotlinx.android.synthetic.main.contact_recycler.view.*
 
 class ContactAdapter(val contactList: List<Contact>) :
     RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
 
     lateinit var binding: ContactRecyclerBinding
+    lateinit var binding2: FragmentContactDetailsBinding
+
     /**
      * Called when RecyclerView needs a new [ViewHolder] of the given type to represent
      * an item.
@@ -75,6 +83,7 @@ class ContactAdapter(val contactList: List<Contact>) :
     override fun onBindViewHolder(holder: ContactAdapter.ContactViewHolder, position: Int) {
 
         holder.setTextViews(contactList[position].firstName,contactList[position].lastName)
+        holder.initOnClicks(contactList[position])
 
 
 
@@ -94,13 +103,33 @@ class ContactAdapter(val contactList: List<Contact>) :
 
         }
 
+        fun initOnClicks (contact: Contact){
+            binding.card2.setOnClickListener{
+                val intent = Intent(binding.root.context,ContactDetailsFragment::class.java)
+                intent.putExtra("lastName",contact.lastName)
+                intent.putExtra("firstName",contact.firstName)
+                intent.putExtra("email",contact.email.toString())
+                intent.putExtra("phone",contact.phone.toString())
+                intent.putExtra("city",contact.ADDRESS?.city)
+                intent.putExtra("state",contact.ADDRESS?.state)
+                intent.putExtra("streetAddress",contact.ADDRESS?.streetAddress)
+                intent.putExtra("zipcode",contact.ADDRESS?.zipcode)
+                startActivity(binding.root.context,intent,null)
+
+
+
+
+            }
+
+        }
+
         /**
          * Called when a view has been clicked.
          *
          * @param v The view that was clicked.
          */
-        override fun onClick(v: View?) {
-            Log.d("Contact", "onClick: ")
+       override fun onClick(v: View?) {
+
         }
 
     }

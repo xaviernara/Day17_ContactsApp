@@ -1,12 +1,13 @@
 package com.example.day17_contactsapp.viewmodel
 
+import android.app.Application
 import androidx.lifecycle.*
 import com.example.day17_contactsapp.model.Contact
 import com.example.day17_contactsapp.repo.ContactRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ContactViewModel() : AndroidViewModel() {
+class ContactViewModel(application: Application) : AndroidViewModel(application) {
 
     val _allContactsList =  MutableLiveData<List<Contact>>()
 
@@ -30,7 +31,7 @@ class ContactViewModel() : AndroidViewModel() {
        */
 
         viewModelScope.launch(Dispatchers.IO){
-            contactRepo.insertContacts(contact)
+            ContactRepo.insertContacts(contact,getApplication())
         }
 
 
@@ -47,7 +48,7 @@ class ContactViewModel() : AndroidViewModel() {
        */
 
         viewModelScope.launch(Dispatchers.IO){
-            contactRepo.deleteContact(contact)
+            ContactRepo.deleteContact(contact,getApplication())
         }
     }
 
@@ -63,15 +64,16 @@ class ContactViewModel() : AndroidViewModel() {
        */
 
         viewModelScope.launch(Dispatchers.IO){
-            contactRepo.updateContact(contact)
+            ContactRepo.updateContact(contact,getApplication())
         }
     }
 
 
 
+
     fun getAllContacts(){
         viewModelScope.launch(Dispatchers.IO){
-            val contacts = contactRepo.allContacts
+            val contacts = ContactRepo.getAllContacts(getApplication())
             _allContactsList.postValue(contacts)
         }
     }

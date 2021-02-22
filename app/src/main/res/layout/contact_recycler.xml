@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+    android:layout_height="wrap_content">
 
 
     <com.google.android.material.circularreveal.cardview.CircularRevealCardView
+        android:id="@+id/card1"
         android:layout_width="220dp"
         android:layout_height="50dp"
-        android:backgroundTint="@android:color/darker_gray"
         android:layout_margin="10dp"
-        >
+        android:backgroundTint="@android:color/darker_gray">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -19,40 +18,36 @@
 
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/contactName"
+                style="@style/TextAppearance.MaterialComponents.Body1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="cONTACT nAME"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/white"
-                android:layout_toEndOf="@+id/card2"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                style="@style/TextAppearance.MaterialComponents.Body1"
-                android:id="@+id/contactName" />
+                android:layout_toEndOf="@+id/card2"
+                android:text="cONTACT nAME"
+                android:textColor="@color/white" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card2"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="50dp"
-                android:background="@color/purple_700"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:id="@+id/card2"
-                >
+                android:background="@color/purple_700"
+                app:cardCornerRadius="50dp">
+
                 <TextView
+                    android:id="@+id/contactInitials"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/contactInitials"
                     android:gravity="center_horizontal"
-                    android:text="XR"/>
+                    android:text="XR" />
             </com.google.android.material.card.MaterialCardView>
 
 
         </RelativeLayout>
-
-
-
-
 
 
     </com.google.android.material.circularreveal.cardview.CircularRevealCardView>
