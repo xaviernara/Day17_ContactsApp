@@ -1,19 +1,16 @@
 package com.example.day17_contactsapp.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.day17_contactsapp.model.Contact
 import com.example.day17_contactsapp.repo.ContactRepo
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ContactViewModel(private val contactRepo: ContactRepo) : ViewModel() {
+class ContactViewModel() : AndroidViewModel() {
 
-    private val _allContactsList =  MutableLiveData<List<Contact>>()
+    val _allContactsList =  MutableLiveData<List<Contact>>()
 
-    private val contactsList: LiveData<List<Contact>>
+    val contactsList: LiveData<List<Contact>>
         get() = _allContactsList
 
 

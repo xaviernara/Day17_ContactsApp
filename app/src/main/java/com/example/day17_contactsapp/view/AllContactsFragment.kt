@@ -5,6 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.day17_contactsapp.adaptor.ContactAdapter
 import com.example.day17_contactsapp.databinding.FragmentAllContactsBinding
@@ -22,15 +27,11 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class AllContactsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    val viewModel by viewModels<ContactViewModel>()
 
     private lateinit var binding: FragmentAllContactsBinding
-    private lateinit var viewModel: ContactViewModel
-    private val phone = listOf<String>("77793111")
-    val email = listOf<String>("xnara@yahoo.com")
-    private var contact = Contact("xavier","nara",null, phone,email,1)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,28 +55,37 @@ class AllContactsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       // val adapter = ContactAdapter()
+        // val adapter = ContactAdapter()
 
 
-
-       // initObservers()
-
-
-
-
-
+        //viewModel = ViewModelProvider(this).get(ContactViewModel::class.java)
+        initObservers()
+        //insertContactsIntoDB()
     }
-/*
+
+    private fun insertContactsIntoDB(): Contact {
+        val phone = listOf<String>("77793111")
+        val email = listOf<String>("xnara@yahoo.com")
+        var contact = Contact("xavier", "nara", null, phone, email, 1)
+
+        return contact
+    }
+
 
     private fun initObservers() {
-        viewModel.insertContacts(contact)
-        viewModel
+        viewModel.insertContacts(insertContactsIntoDB())
+        viewModel.getAllContacts()
+        viewModel._allContactsList.observe(requireActivity()) {
+            generateDataList(it)
+        }
+
+
     }
 
-    fun generateDataList(contactList :List<Contact>){
+    private fun generateDataList(contactList: List<Contact>) {
         binding.contactRecycler.adapter = ContactAdapter(contactList)
-        binding.contactRecycler.layoutManager = RecyclerView.LayoutManager(this)
+        binding.contactRecycler.layoutManager = LinearLayoutManager(binding.contactRecycler.context)
     }
-*/
+
 
 }

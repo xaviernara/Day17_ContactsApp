@@ -3,18 +3,21 @@ package com.example.day17_contactsapp.repo
 import androidx.annotation.WorkerThread
 import com.example.day17_contactsapp.model.Contact
 import com.example.day17_contactsapp.repo.dao.ContactDAO
+import com.example.day17_contactsapp.repo.local.ContactDB
 import kotlinx.coroutines.flow.Flow
 
 //https://developer.android.com/codelabs/android-room-with-a-view-kotlin#8
 
 // Declares the DAO as a private property in the constructor. Pass in the DAO
 // instead of the whole database, because you only need access to the DAO
-class ContactRepo (private val contactDAO: ContactDAO){
+object ContactRepo {
+
 
     // Room executes all queries on a separate thread.
     // Observed Flow will notify the observer when the data has changed.
     //val allContacts : Flow<List<Contact>> = contactDAO.selectAllContacts()
-    val allContacts : List<Contact> = contactDAO.selectAllContacts()
+    val contactDoa =  ContactDB.getDataBase()?.contactDAO()
+    val allContacts : List<Contact>? = contactDoa?.selectAllContacts()
 
 
 
