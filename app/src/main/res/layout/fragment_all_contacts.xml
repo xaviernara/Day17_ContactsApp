@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.AllContactsFragment">
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/contactRecycler"
@@ -12,9 +15,14 @@
         tools:listitem="@layout/contact_recycler"
         />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addContactButton"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/contactRecycler"
+        android:text="Add"
+        />
 
 
 
-
-
-</FrameLayout>
+</RelativeLayout>

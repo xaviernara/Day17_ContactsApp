@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_allContactsFragment_to_create_Edit_ContactFragment"
             app:destination="@id/create_Edit_ContactFragment" />
+        <action
+            android:id="@+id/action_allContactsFragment_to_contactDetailsFragment"
+            app:destination="@id/contactDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/create_Edit_ContactFragment"
@@ -22,12 +25,26 @@
         <action
             android:id="@+id/action_create_Edit_ContactFragment_to_contactDetailsFragment"
             app:destination="@id/contactDetailsFragment" />
+
         <argument
-            android:name="fullName"
+            android:name="address"
             app:argType="string" />
         <argument
-            android:name="initials "
+            android:name="lastName"
             app:argType="string" />
+        <argument
+            android:name="firstName"
+            app:argType="string" />
+        <argument
+            android:name="phoneNumber"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="numOfContacts"
+            app:argType="string" />
+
 
     </fragment>
     <fragment
@@ -40,26 +57,17 @@
             android:name="address"
             app:argType="string" />
         <argument
-            android:name="fullName"
+            android:name="lastName"
+            app:argType="string" />
+        <argument
+            android:name="firstName"
             app:argType="string" />
         <argument
             android:name="phoneNumber"
-            app:argType="integer" />
+            app:argType="string" />
         <argument
             android:name="email"
             app:argType="string" />
-        <argument android:name="city"
-            app:argType="string" />
-        <argument
-            android:name="state"
-            app:argType="string" />
-        <argument
-            android:name="zipcode"
-            app:argType="integer" />
-
-
-
-
     </fragment>
     <activity
         android:id="@+id/mainActivity"

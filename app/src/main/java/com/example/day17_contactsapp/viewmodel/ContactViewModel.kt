@@ -74,7 +74,7 @@ class ContactViewModel(application: Application) : AndroidViewModel(application)
     fun getAllContacts(){
         viewModelScope.launch(Dispatchers.IO){
             val contacts = ContactRepo.getAllContacts(getApplication())
-            _allContactsList.postValue(contacts)
+            _allContactsList.postValue(contacts!!)
         }
     }
 

@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/numberOfContactsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="# of Contacts"
@@ -28,7 +28,83 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+    <LinearLayout
+        android:layout_width="411dp"
+        android:layout_height="597dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberOfContactsText"
+        app:layout_constraintVertical_bias="1.0">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/firstNameText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="First Name"
+            android:background="@color/teal_700"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/lastNameText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Last Name"
+            android:background="@color/teal_700"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addressText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Address"
+            android:background="@color/teal_700"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phoneNumberText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Phone"
+            android:background="@color/teal_700"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Email"
+            android:background="@color/teal_700"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/updateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Update"
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/editButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Edit" />
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

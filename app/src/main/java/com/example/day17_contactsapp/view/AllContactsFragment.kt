@@ -6,13 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.day17_contactsapp.adaptor.ContactAdapter
+import com.example.day17_contactsapp.adaptor.ContactClickListener
 import com.example.day17_contactsapp.databinding.FragmentAllContactsBinding
 import com.example.day17_contactsapp.model.Address
 import com.example.day17_contactsapp.model.Contact
 import com.example.day17_contactsapp.viewmodel.ContactViewModel
+import androidx.navigation.fragment.findNavController
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +29,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [AllContactsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AllContactsFragment : Fragment() {
+class AllContactsFragment : Fragment(), ContactClickListener {
    /* private var param1: String? = null
     private var param2: String? = null*/
    private val viewModel by viewModels<ContactViewModel>()
@@ -57,8 +62,23 @@ class AllContactsFragment : Fragment() {
 
 
         //viewModel = ViewModelProvider(this).get(ContactViewModel::class.java)
-        initObservers()
+        //initObservers()
         //insertContactsIntoDB()
+
+        viewModel.insertContacts(insertContactsIntoDB())
+        viewModel.insertContacts(insertContactsIntoDB2())
+        viewModel.getAllContacts()
+        viewModel.contactsList.observe(viewLifecycleOwner, Observer { contactsList ->
+            binding.contactRecycler.layoutManager = LinearLayoutManager(binding.contactRecycler.context)
+            binding.contactRecycler.adapter = ContactAdapter(contactsList, this)
+        })
+        /*viewModel._allContactsList.observe(requireActivity()) {
+
+
+
+        }
+*/
+
     }
 
     private fun insertContactsIntoDB(): Contact {
@@ -74,7 +94,7 @@ class AllContactsFragment : Fragment() {
         val email = listOf("thing@yahoo.com")
         val address = Address("place st","gary","In",45640,1)
 
-        return Contact("person", "place", address, phone, email, 1)
+        return Contact("person", "place", address, phone, email, 2)
     }
 
 
@@ -90,8 +110,18 @@ class AllContactsFragment : Fragment() {
     }
 
     private fun generateDataList(contactList: List<Contact>) {
-        binding.contactRecycler.adapter = ContactAdapter(contactList)
+        binding.contactRecycler.adapter = ContactAdapter(contactList, this)
         binding.contactRecycler.layoutManager = LinearLayoutManager(binding.contactRecycler.context)
+    }
+
+    override fun onClickListener(contact: Contact) {
+        val firstName = contact.firstName
+        val lastName = contact.lastName
+        val address = contact.ADDRESS.toString()
+        val email = contact.email.toString()
+        val phone = contact.phone.toString()
+        val action = AllContactsFragmentDirections.actionAllContactsFragmentToContactDetailsFragment(address,lastName,firstName,phone,email)
+        findNavController().navigate(action)
     }
 
 
