@@ -1,22 +1,25 @@
 package com.example.day17_contactsapp.view
 
-import android.content.Intent.getIntent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.NavArgs
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.day17_contactsapp.ContactDetailsFragmentArgs
+import com.example.day17_contactsapp.ContactDetailsFragmentDirections
 import com.example.day17_contactsapp.R
-import com.example.day17_contactsapp.databinding.FragmentAllContactsBinding
+
 import com.example.day17_contactsapp.databinding.FragmentContactDetailsBinding
-import kotlinx.android.synthetic.main.fragment_contact_details.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+
 
 /**
  * A simple [Fragment] subclass.
@@ -27,6 +30,9 @@ class ContactDetailsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private val args : ContactDetailsFragmentArgs by navArgs()
+
     
     private lateinit var  binding: FragmentContactDetailsBinding
 
@@ -50,13 +56,26 @@ class ContactDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //binding.addressText.text= intent.getStringExtra()
-        val args : ContactDetailsFragmentArgs by navArgs()
-        binding.emailText.setText(args.email)
-        binding.addressText.setText(args.address)
-        binding.firstNameText.setText(args.firstName)
-        binding.lastNameText.setText(args.lastName)
-        binding.phoneNumberText.setText(args.phoneNumber)
+
+
+        binding.emailText.text = args.contact?.email.toString()
+        binding.addressText.text = args.contact?.ADDRESS.toString()
+        binding.firstNameText.text = args.contact?.firstName
+        binding.lastNameText.text = args.contact?.lastName
+        binding.phoneNumberText.text = args.contact?.phone.toString()
+
+
+        binding.addContactButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_contactDetailsFragment_to_create_Edit_ContactFragment))
+
+
+        binding.editContactButton.setOnClickListener{
+
+            //Navigation.createNavigateOnClickListener()
+
+            val action = ContactDetailsFragmentDirections.actionContactDetailsFragmentToCreateEditContactFragment(args.contact)
+            findNavController().navigate(action)
+        }
+
 
 
     }

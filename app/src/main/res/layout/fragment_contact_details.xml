@@ -6,49 +6,78 @@
     android:orientation="vertical"
     tools:context=".view.ContactDetailsFragment">
 
-    <EditText
+    <TextView
         android:id="@+id/firstNameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_weight="1"
         android:text="Name" />
 
-    <EditText
+    <TextView
         android:id="@+id/lastNameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_weight="1"
         android:text="Name" />
 
-    <EditText
+    <TextView
         android:id="@+id/addressText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_weight="1"
         android:text="Name" />
 
-    <EditText
+    <TextView
         android:id="@+id/phoneNumberText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_weight="1"
         android:text="Name" />
 
-    <EditText
+    <TextView
         android:id="@+id/emailText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:layout_weight="1"
         android:text="Name" />
+    <TextView
+        android:id="@+id/cityText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_weight="1"
+        android:text="Name" />
+    <TextView
+        android:id="@+id/stateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_weight="1"
+        android:text="Name" />
+
+    <TextView
+        android:id="@+id/zipcodeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_weight="1"
+        android:text="Name" />
+
+    <Button
+        android:id="@+id/editContactButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Contact" />
 
     <Button
         android:id="@+id/addContactButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add/Edit Contact" />
+        android:text="Add Contact" />
+
 </LinearLayout>

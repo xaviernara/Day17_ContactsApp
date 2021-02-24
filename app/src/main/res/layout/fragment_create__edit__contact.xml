@@ -78,9 +78,47 @@
             android:layout_weight="1"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cityText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Phone"
+            android:background="@color/teal_700"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/stateText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Phone"
+            android:background="@color/teal_700"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/zipcodeText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Phone"
+            android:inputType="number"
+            android:background="@color/teal_700"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Email"
+            android:inputType="textEmailAddress"
+            android:background="@color/teal_700"
+            android:layout_weight="1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/streetText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Email"
@@ -90,19 +128,11 @@
             />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/updateButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Update"
-            />
-
-        <com.google.android.material.button.MaterialButton
             android:id="@+id/editButton"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Edit" />
+            android:text="Edit/Create" />
 
     </LinearLayout>
 
