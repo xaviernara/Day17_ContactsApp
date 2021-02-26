@@ -9,9 +9,7 @@ import androidx.navigation.NavArgs
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.day17_contactsapp.ContactDetailsFragmentArgs
-import com.example.day17_contactsapp.ContactDetailsFragmentDirections
-import com.example.day17_contactsapp.R
+
 
 import com.example.day17_contactsapp.databinding.FragmentContactDetailsBinding
 
@@ -31,10 +29,10 @@ class ContactDetailsFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
-    private val args : ContactDetailsFragmentArgs by navArgs()
+    private val args: ContactDetailsFragmentArgs by navArgs()
 
-    
-    private lateinit var  binding: FragmentContactDetailsBinding
+
+    private lateinit var binding: FragmentContactDetailsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,30 +63,42 @@ class ContactDetailsFragment : Fragment() {
         binding.phoneNumberText.text = args.contact?.phone.toString()
 
 
-        binding.addContactButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_contactDetailsFragment_to_create_Edit_ContactFragment))
-
-
-        binding.editContactButton.setOnClickListener{
-
-            //Navigation.createNavigateOnClickListener()
-
-            val action = ContactDetailsFragmentDirections.actionContactDetailsFragmentToCreateEditContactFragment(args.contact)
+        binding.addContactButton.setOnClickListener {
+            //Navigation.createNavigateOnClickListener(R.id.action_contactDetailsFragment_to_create_Edit_ContactFragment)
+           val action =
+                ContactDetailsFragmentDirections.actionContactDetailsFragmentToCreateEditContactFragment(
+                    null
+                )
             findNavController().navigate(action)
         }
 
 
 
+
+        binding.editContactButton.setOnClickListener {
+
+            //Navigation.createNavigateOnClickListener()
+
+           val action =
+                ContactDetailsFragmentDirections.actionContactDetailsFragmentToCreateEditContactFragment(
+                    args.contact
+                )
+            findNavController().navigate(action)
+        }
+
+
     }
 
     /*companion object {
-        *//**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ContactDetailsFragment.
-         *//*
+        */
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment ContactDetailsFragment.
+     *//*
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =

@@ -1,6 +1,7 @@
 package com.example.day17_contactsapp.view
 
 import android.os.Bundle
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import com.example.day17_contactsapp.databinding.FragmentCreateEditContactBindin
 import com.example.day17_contactsapp.model.Address
 import com.example.day17_contactsapp.model.Contact
 import com.example.day17_contactsapp.viewmodel.ContactViewModel
+import kotlin.random.Random
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,16 +31,13 @@ private lateinit var binding: FragmentCreateEditContactBinding
  * create an instance of this fragment.
  */
 class Create_Edit_ContactFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
     private val viewModel by viewModels<ContactViewModel>()
+    val args : Create_Edit_ContactFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
         }
     }
 
@@ -55,27 +54,53 @@ class Create_Edit_ContactFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.contactsList.observe(viewLifecycleOwner, Observer { contactsList ->
+            binding.numberOfContactsText.text = contactsList.size.toString()
+        })
 
+        if (args.contact != null) {
+            //viewModel.insertContacts(contact)
+            binding.firstNameText.setText(args.contact!!.firstName)
+            binding.lastNameText.setText(args.contact!!.lastName)
+            binding.emailText.setText(args.contact!!.email.toString())
+            binding.phoneNumberText.setText(args.contact!!.phone.toString())
+            binding.cityText.setText(args.contact!!.ADDRESS?.city)
+            binding.stateText.setText(args.contact!!.ADDRESS?.state)
+            binding.zipcodeText.setText(args.contact!!.ADDRESS?.zipcode.toString())
+            binding.streetText.setText(args.contact!!.ADDRESS?.streetAddress)
+        }
 
         //binding.editButton.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_allContactsFragment_to_create_Edit_ContactFragment))
 
         binding.editButton.setOnClickListener{
 
-            val args : Create_Edit_ContactFragmentArgs by navArgs()
-            var address = args.contact?.ADDRESS
-            var contact= args.contact
+
+            var fName = binding.firstNameText.text.toString()
+            var lName = binding.lastNameText.text.toString()
+            var email = listOf(binding.emailText.text.toString())
+            var phone = listOf(binding.phoneNumberText.text.toString())
+            var city = binding.cityText.text.toString()
+            var state = binding.stateText.text.toString()
+            var zipcode = binding.zipcodeText.text.toString().toInt()
+            var street = binding.streetText.text.toString()
+            val id = Random.nextInt(100)
+
+            var address = Address(street,city,state,zipcode)
+            var newContact = Contact(fName,lName,address,phone,email,id)
+
             //viewModel.insertContacts()
             viewModel.contactsList.observe(viewLifecycleOwner, Observer { contactsList ->
 
-                if(contactsList.contains(contact)){
-                    if (contact != null) {
-                        viewModel.updateContact(contact)
+
+                if(!contactsList.contains(newContact)){
+                    viewModel.insertContacts(newContact)
+                    /*if (newContact != null) {
+                        viewModel.updateContact(newContact)
                     }
+                    else{
 
-                }
+                    }*/
 
-                if (contact != null) {
-                    viewModel.insertContacts(contact)
                 }
             }
 

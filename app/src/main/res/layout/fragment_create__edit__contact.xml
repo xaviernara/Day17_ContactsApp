@@ -60,16 +60,6 @@
             />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/addressText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Address"
-            android:background="@color/teal_700"
-            android:layout_weight="1"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            />
-
-        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/phoneNumberText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
